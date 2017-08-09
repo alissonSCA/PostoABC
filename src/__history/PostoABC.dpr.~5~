@@ -1,0 +1,18 @@
+program PostoABC;
+
+uses
+  Vcl.Forms,
+  unPrincipal in 'unPrincipal.pas' {Form1},
+  unDados in 'unDados.pas' {DM: TDataModule},
+  unConexao in 'unConexao.pas' {frmConexao};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmConexao, frmConexao);
+  Application.CreateForm(TDM, DM);
+  Application.Run;
+end.

@@ -1,0 +1,77 @@
+unit unUsuarioGUI;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unUsuarioDAO, unUsuarioTO, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.ButtonGroup, generics.collections;
+
+type
+  TfrmUsuario = class(TForm)
+    lstUsuarios: TListBox;
+    ButtonGroup1: TButtonGroup;
+    Label1: TLabel;
+    lblID: TLabel;
+    Label2: TLabel;
+    edtNome: TEdit;
+    Label3: TLabel;
+    edtUsername: TEdit;
+    Label4: TLabel;
+    edtPassword: TEdit;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormActivate(Sender: TObject);
+    procedure lstUsuariosClick(Sender: TObject);
+  private
+    { Private declarations }
+    FListaUsuarios: TObjectList<TUsuario>;
+    procedure atualizarLista;
+    procedure loadFromId(id:integer);
+  public
+    { Public declarations }
+  end;
+
+var
+  frmUsuario: TfrmUsuario;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmUsuario.atualizarLista;
+var
+  usuario: TUsuario;
+begin
+  FListaUsuarios := TUsuarioDAO.listar;
+  for usuario in FListaUsuarios do
+  begin
+    lstUsuarios.Items.Add(usuario.toString);
+  end;
+  if FListaUsuarios.Count > 0 then
+    lstUsuarios.ItemIndex := 0;
+end;
+
+procedure TfrmUsuario.FormActivate(Sender: TObject);
+begin
+  atualizarLista;
+end;
+
+procedure TfrmUsuario.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  freeAndNil(frmUsuario);
+end;
+
+procedure TfrmUsuario.loadFromId(id: integer);
+begin
+  lblID.Caption := FListaUsuarios.Items[id].Id;
+  edtNome.Text  := FListaUsuarios.Items[id].Nome;
+  edtUsername.Text  := FListaUsuarios.Items[id].Username;
+  edtPassword.Text  := FListaUsuarios.Items[id].Password;
+end;
+
+procedure TfrmUsuario.lstUsuariosClick(Sender: TObject);
+begin
+  loadFromId(lstUsuarios.ItemIndex);
+end;
+
+end.

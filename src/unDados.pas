@@ -1,0 +1,62 @@
+unit unDados;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
+  IniFiles, unConexao, Controls, Vcl.Dialogs, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
+
+type
+  TDM = class(TDataModule)
+    FDConnection1: TFDConnection;
+    myQry: TFDQuery;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure conectaDatabase();
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDM.conectaDatabase;
+var
+  ini: TIniFile;
+begin
+  ini := TIniFile.Create(StringReplace(ParamStr(0),'.exe','.ini',[]));
+  FDConnection1.Close;
+  while (not FDConnection1.Connected) do
+  begin
+    FDConnection1.Params.Database := ini.ReadString('DATABASE','Path', StringReplace(ParamStr(0),'.exe','.fdb',[]));
+    FDConnection1.Params.UserName := ini.ReadString('DATABASE','Username','SYSDBA');
+    FDConnection1.Params.Password := ini.ReadString('DATABASE','Password','masterkey');
+    try
+      FDConnection1.Open;
+    except
+      if (MessageDlg('Não foi possível estabelecer uma conexão com o banco de dados. Deseja rever os parâmetros de configuração?',mtConfirmation,[mbYes, mbNo], 0) = mrYes) then
+        frmConexao.ShowModal
+      else
+        break;
+    end;
+  end;
+end;
+
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+begin
+  conectaDatabase;
+end;
+
+end.

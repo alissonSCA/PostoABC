@@ -1,0 +1,18 @@
+unit unUsuarioTO;
+
+interface
+uses
+
+type
+
+[]
+TUsuario = class
+  private
+    FId: integer;
+  public
+    property Id: integer read FId write FId;
+end;
+
+implementation
+
+end.

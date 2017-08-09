@@ -1,0 +1,35 @@
+unit unConexao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls;
+
+type
+  TfrmConexao = class(TForm)
+    Label1: TLabel;
+    edtBancoPath: TEdit;
+    SpeedButton1: TSpeedButton;
+    fodDatabase: TFileOpenDialog;
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmConexao: TfrmConexao;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmConexao.SpeedButton1Click(Sender: TObject);
+begin
+  if (fodDatabase.Execute) then
+    edtBancoPath.Text := fodDatabase.FileName;
+end;
+
+end.

@@ -1,0 +1,24 @@
+unit unAttributes;
+
+interface
+
+type
+
+TTableAttribute = class(TCustomAttribute)
+  private
+    FTableName: string;
+  public
+    property TableName: string read FTableName;
+    constructor Create(ATableName:string);overload;
+end;
+
+implementation
+
+{ TTableAttribute }
+
+constructor TTableAttribute.Create(ATableName: string);
+begin
+  FTableName := ATableName;
+end;
+
+end.

@@ -1,0 +1,38 @@
+unit unAtributos;
+
+interface
+
+type
+  TDataTableAttribute = class(TCustomAttribute)
+    private
+      FTableName: String;
+    public
+      property TableName: String read FTableName write FTableName;
+      constructor Create(ATableName:String);
+  end;
+
+  TDataFieldAttribute = class(TCustomAttribute)
+    private
+      FFieldName: String;
+    public
+      property FieldName: String read FFieldName write FFieldName;
+      constructor Create(AFieldName:String);
+  end;
+
+implementation
+
+{ TDataTableAttribute }
+
+constructor TDataTableAttribute.Create(ATableName: String);
+begin
+  FTableName := ATableName;
+end;
+
+{ TDataFieldAttribute }
+
+constructor TDataFieldAttribute.Create(AFieldName: String);
+begin
+  FFieldName := AFieldName;
+end;
+
+end.

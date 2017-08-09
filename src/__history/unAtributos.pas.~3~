@@ -1,0 +1,49 @@
+unit unAtributos;
+
+interface
+
+type
+  TDataTableAttribute = class(TCustomAttribute)
+    private
+      FTableName: String;
+    public
+      property TableName: String read FTableName write FTableName;
+      constructor Create(ATableName:String);
+  end;
+
+  TDataFieldAttribute = class(TCustomAttribute)
+    private
+      FFieldName: String;
+    FFK: boolean;
+    FAutoInc: boolean;
+    FPK: boolean;
+    public
+      property FieldName: String read FFieldName write FFieldName;
+      property PK: boolean read FPK write FPK;
+      property AutoInc: boolean read FAutoInc write FAutoInc;
+      property FK: boolean read FFK write FFK;
+      constructor Create(AFieldName:String; apk: boolean = false; autoInc: boolean = false;
+                         afk: boolean = false);
+  end;
+
+implementation
+
+{ TDataTableAttribute }
+
+constructor TDataTableAttribute.Create(ATableName: String);
+begin
+  FTableName := ATableName;
+end;
+
+{ TDataFieldAttribute }
+
+constructor TDataFieldAttribute.Create(AFieldName: String; apk: boolean = false; autoInc: boolean = false;
+                         afk: boolean = false);
+begin
+  FFieldName := AFieldName;
+  FPK := APK;
+  FAutoInc := autoInc;
+  FFK := afk;
+end;
+
+end.

@@ -1,0 +1,30 @@
+unit unHelpers;
+
+interface
+
+uses
+  Vcl.StdCtrls;
+
+type
+  TListBoxHelper = class helper for TListBox
+    function selecionado:String;
+  end;
+
+
+implementation
+
+{ TListBoxHelper }
+
+function TListBoxHelper.selecionado: String;
+begin
+  if self.ItemIndex > -1 then
+  begin
+    result := self.Items[self.ItemIndex];
+  end
+  else
+  begin
+    result := '';
+  end;
+end;
+
+end.

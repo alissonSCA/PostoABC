@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2017/08/09 09:58:10.890,=C:\Users\Alisson\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/09 09:58:27.551,D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\unPrincipal.dfm=C:\Users\Alisson\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2017/08/09 09:58:27.551,D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\unPrincipal.pas=C:\Users\Alisson\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/09 09:58:45.179,D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\RTTI_Helpers.dproj=C:\Users\Alisson\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2017/08/09 09:59:14.951,=D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\Unit1.pas</Transaction>
+    <Transaction>2017/08/09 09:59:21.997,D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\unHelpers.pas=D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\Unit1.pas</Transaction>
+    <Transaction>2017/08/09 10:30:22.209,=D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\Unit1.pas</Transaction>
+    <Transaction>2017/08/09 10:30:47.461,D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\unAttributes.pas=D:\fortes\Posto ABC\PostoABC\POCs\RTTI-Helpers\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

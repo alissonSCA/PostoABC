@@ -1,0 +1,71 @@
+unit unUsuarioDAO;
+
+interface
+
+uses
+  unDados, unUsuarioTO, generics.collections, Rtti, unAtributos;
+
+type
+  TUsuarioDAO = class
+    public
+      class function  listar():TObjectList<TUsuario>;
+      class procedure insert(usuario: TUsuario);
+      class procedure update(usuario: TUsuario);
+  end;
+
+implementation
+
+
+
+{ TUsuarioDAO }
+
+class procedure TUsuarioDAO.insert(usuario: TUsuario);
+begin
+        //
+end;
+
+class function TUsuarioDAO.listar: TObjectList<TUsuario>;
+var
+  usuario: TUsuario;
+  lContext: TRttiContext;
+  lType: TRttiType;
+  lProperty: TRttiProperty;
+  lAttribute: TCustomAttribute;
+begin
+  result := TObjectList<TUsuario>.Create(nil);
+  with DM.myQry, DM.myQry.SQL do
+  begin
+    Close;
+    Clear;
+    Add('SELECT * FROM USUARIOS');
+    Open;
+
+    lContext := TRttiContext.Create;
+    lType := lContext.GetType(TUsuario);
+    while not Eof do
+    begin
+      usuario := TUsuario.Create;
+
+      for lProperty in lType.GetProperties do
+      begin
+        for lAttribute in lProperty.GetAttributes do
+        begin
+          if lAttribute is TDataFieldAttribute then
+          begin
+            lProperty.SetValue(usuario, FieldByName(TDataFieldAttribute(lAttribute).FieldName).AsString);
+          end;
+        end;
+      end;
+      result.Add(usuario);
+
+      Next;
+    end;
+  end;
+end;
+
+class procedure TUsuarioDAO.update(usuario: TUsuario);
+begin
+      //
+end;
+
+end.

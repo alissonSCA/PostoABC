@@ -1,0 +1,56 @@
+unit unUsuarioDAO;
+
+interface
+
+uses
+  unDados, unUsuarioTO, generics.collections, Rtti, unAtributos;
+
+type
+  TUsuarioDAO = class
+    public
+      class function  listar():TObjectList<TUsuario>;
+      class procedure insert(usuario: TUsuario);
+      class procedure update(usuario: TUsuario);
+  end;
+
+implementation
+
+
+
+{ TUsuarioDAO }
+
+class procedure TUsuarioDAO.insert(usuario: TUsuario);
+begin
+        //
+end;
+
+class function TUsuarioDAO.listar: TObjectList<TUsuario>;
+var
+  usuario: TUsuario;
+begin
+  result := TObjectList<TUsuario>.Create;
+  with DM.myQry, DM.myQry.SQL do
+  begin
+    Close;
+    Clear;
+    Add('SELECT * FROM USUARIOS');
+    Open;
+    while not Eof do
+    begin
+      usuario := TUsuario.Create;
+      usuario.Id := FieldByName('ID').AsInteger;
+      usuario.Nome := FieldByName('NOME').AsString;
+      usuario.Username := FieldByName('USERNAME').AsString;
+      usuario.Password := FieldByName('PASSWORD').AsString;
+      result.Add(usuario);
+      Next;
+    end;
+  end;
+end;
+
+class procedure TUsuarioDAO.update(usuario: TUsuario);
+begin
+      //
+end;
+
+end.
