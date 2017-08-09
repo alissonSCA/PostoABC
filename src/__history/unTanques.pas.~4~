@@ -1,0 +1,70 @@
+unit unTanques;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unDados, Data.DB, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Mask, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmTanques = class(TForm)
+    DBGrid1: TDBGrid;
+    DBNavigator1: TDBNavigator;
+    qryTanques: TFDQuery;
+    qryTanquesID: TIntegerField;
+    qryTanquesDESCRICAO: TStringField;
+    qryTanquesCOMBUSTIVEL: TIntegerField;
+    qryTanquesCOMB_DESC: TStringField;
+    Label1: TLabel;
+    dtsTanques: TDataSource;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBText1: TDBText;
+    procedure DBEdit3Exit(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmTanques: TfrmTanques;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmTanques.DBEdit3Exit(Sender: TObject);
+begin
+{  with DM.myQry, DM.myQry.SQL do
+  begin
+    Close;
+    Clear;
+    Add('SELECT DESCRICAO FROM COMBUSTIVEL WHERE ID = :ID');
+    ParamByName('ID').AsInteger := DBEdit3.Field.AsInteger;
+    Open;
+    if not then
+
+  end;}
+end;
+
+procedure TfrmTanques.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  freeAndNil(frmTanques);
+end;
+
+procedure TfrmTanques.FormCreate(Sender: TObject);
+begin
+  qryTanques.Open;
+end;
+
+end.

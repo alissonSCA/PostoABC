@@ -9,6 +9,7 @@ object DM: TDM
       'User_Name=SYSDBA'
       'Password=123456'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 64
@@ -17,5 +18,10 @@ object DM: TDM
     Connection = FDConnection1
     Left = 224
     Top = 168
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 296
+    Top = 56
   end
 end

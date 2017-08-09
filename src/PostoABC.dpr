@@ -10,7 +10,11 @@ uses
   unUsuarioGUI in 'unUsuarioGUI.pas' {frmUsuario},
   unUsuarioDAO in 'unUsuarioDAO.pas',
   unLogin in 'unLogin.pas' {frmLogin},
-  unSistema in 'unSistema.pas';
+  unSistema in 'unSistema.pas',
+  unCombustivel in 'unCombustivel.pas' {frmCombustivel},
+  unTanques in 'unTanques.pas' {frmTanques},
+  unConsulta in 'unConsulta.pas' {frmConsulta},
+  unBombas in 'unBombas.pas' {frmBombas};
 
 {$R *.res}
 
@@ -20,7 +24,6 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmConexao, frmConexao);
   Application.CreateForm(TDM, DM);
-
   TfrmLogin.Login();
 
   Application.Run;

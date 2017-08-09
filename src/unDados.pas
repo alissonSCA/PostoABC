@@ -8,12 +8,13 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
   IniFiles, unConexao, Controls, Vcl.Dialogs, FireDAC.Stan.Param, FireDAC.DatS,
-  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.UI;
 
 type
   TDM = class(TDataModule)
     FDConnection1: TFDConnection;
     myQry: TFDQuery;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

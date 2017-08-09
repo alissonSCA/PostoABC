@@ -1,0 +1,78 @@
+unit unBombas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unDados, unConsulta, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, Vcl.DBCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
+  Vcl.Mask, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TfrmBombas = class(TForm)
+    qryBombas: TFDQuery;
+    qryBombasID: TIntegerField;
+    qryBombasDESCRICAO: TStringField;
+    qryBombasTANQUE: TIntegerField;
+    Label1: TLabel;
+    dtsBombas: TDataSource;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    GroupBox1: TGroupBox;
+    Label4: TLabel;
+    lblTanque: TLabel;
+    Label5: TLabel;
+    lblCombustivel: TLabel;
+    DBGrid1: TDBGrid;
+    DBNavigator1: TDBNavigator;
+    DBText1: TDBText;
+  private
+    { Private declarations }
+    procedure preencheDescDet(id:integer);
+  public
+    { Public declarations }
+  end;
+
+var
+  frmBombas: TfrmBombas;
+
+implementation
+
+{$R *.dfm}
+
+{ TfrmBombas }
+
+procedure TfrmBombas.preencheDescDet(id: integer);
+begin
+  with DM.myQry, DM.myQry.SQL do
+  begin
+    Close;
+    Clear;
+    Add('select                                   ');
+    Add('   T.descricao AS "DESC_TANQUE",         ');
+    Add('   C.descricao AS "DESC_COMB"            ');
+    Add('from                                     ');
+    Add('   TANQUE T INNER JOIN combustivel C ON  ');
+    Add('       T.combustivel = C.id              ');
+    Add('where                                    ');
+    Add('   t.id = :id                            ');
+    ParamByName('ID').AsInteger := id;
+    Open;
+    if not IsEmpty then
+    begin
+      lblTanque.Caption := Fields[0].DisplayText;
+      lblCombustivel.Caption := Fields[1].DisplayText;
+    end
+    else
+    begin
+      lblTanque.Caption := '...';
+      lblCombustivel.Caption := '...';
+    end;
+  end;
+end;
+
+end.

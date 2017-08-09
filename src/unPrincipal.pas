@@ -11,7 +11,13 @@ type
     MainMenu1: TMainMenu;
     Cadastros1: TMenuItem;
     Usurios1: TMenuItem;
+    Combustiveis1: TMenuItem;
+    anques1: TMenuItem;
+    Bombas1: TMenuItem;
     procedure Usurios1Click(Sender: TObject);
+    procedure Combustiveis1Click(Sender: TObject);
+    procedure anques1Click(Sender: TObject);
+    procedure Bombas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,7 +31,28 @@ implementation
 
 {$R *.dfm}
 
-uses unUsuarioGUI;
+uses unUsuarioGUI, unCombustivel, unTanques, unBombas;
+
+procedure TfrmPrincipal.anques1Click(Sender: TObject);
+begin
+  if frmTanques = nil then
+    Application.CreateForm(TfrmTanques, frmTanques);
+  frmTanques.Show;
+end;
+
+procedure TfrmPrincipal.Bombas1Click(Sender: TObject);
+begin
+  if frmBombas = nil then
+    Application.CreateForm(TfrmBombas, frmBombas);
+  frmBombas.Show;
+end;
+
+procedure TfrmPrincipal.Combustiveis1Click(Sender: TObject);
+begin
+  if frmCombustivel = nil then
+    Application.CreateForm(TfrmCombustivel, frmCombustivel);
+  frmCombustivel.Show;
+end;
 
 procedure TfrmPrincipal.Usurios1Click(Sender: TObject);
 begin

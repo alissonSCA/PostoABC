@@ -1,0 +1,73 @@
+unit unConsulta;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unDados, Data.DB, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Vcl.StdCtrls, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.Buttons;
+
+type
+  TConsulta = reference to procedure(qry: TFDQuery;par:string);
+
+  TfrmConsulta = class(TForm)
+    Panel1: TPanel;
+    DBGrid1: TDBGrid;
+    qryCons: TFDQuery;
+    Label1: TLabel;
+    edtParametro: TEdit;
+    ckbDinamico: TCheckBox;
+    dtsCons: TDataSource;
+    btnBuscar: TBitBtn;
+    procedure btnBuscarClick(Sender: TObject);
+    procedure edtParametroChange(Sender: TObject);
+    procedure edtParametroKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    class var FCons: TConsulta;
+  public
+    { Public declarations }
+    class function consultarBanco(cons:TConsulta; retorno: String):String;
+  end;
+
+var
+  frmConsulta: TfrmConsulta;
+
+implementation
+
+{$R *.dfm}
+
+{ TForm1 }
+
+procedure TfrmConsulta.btnBuscarClick(Sender: TObject);
+begin
+  FCons(qryCons, edtParametro.Text);
+end;
+
+class function TfrmConsulta.consultarBanco(cons: TConsulta; retorno: String): String;
+begin
+  FCons := cons;
+  Application.CreateForm(TfrmConsulta, frmConsulta);
+  frmConsulta.ShowModal;
+  result := frmConsulta.qryCons.FieldByName(retorno).DisplayText;
+  freeAndNil(frmConsulta);
+end;
+
+procedure TfrmConsulta.edtParametroChange(Sender: TObject);
+begin
+  if ckbDinamico.Checked then
+    FCons(qryCons, edtParametro.Text);
+end;
+
+procedure TfrmConsulta.edtParametroKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+    btnBuscar.Click;
+  if key = #27 then
+    Close;
+end;
+
+end.

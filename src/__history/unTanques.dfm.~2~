@@ -1,0 +1,142 @@
+object frmTanques: TfrmTanques
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de Tanques'
+  ClientHeight = 333
+  ClientWidth = 491
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 5
+    Width = 11
+    Height = 13
+    Caption = 'ID'
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 48
+    Width = 59
+    Height = 13
+    Caption = 'DESCRICAO'
+    FocusControl = DBEdit2
+  end
+  object Label3: TLabel
+    Left = 8
+    Top = 88
+    Width = 69
+    Height = 13
+    Caption = 'COMBUSTIVEL'
+    FocusControl = DBEdit3
+  end
+  object DBText1: TDBText
+    Left = 8
+    Top = 24
+    Width = 65
+    Height = 17
+    DataField = 'ID'
+    DataSource = dtsTanques
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 160
+    Width = 491
+    Height = 173
+    Align = alBottom
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 0
+    Top = 135
+    Width = 491
+    Height = 25
+    VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
+    Align = alBottom
+    TabOrder = 1
+    ExplicitLeft = 48
+    ExplicitTop = 121
+    ExplicitWidth = 240
+  end
+  object DBEdit2: TDBEdit
+    Left = 8
+    Top = 61
+    Width = 469
+    Height = 21
+    DataField = 'DESCRICAO'
+    DataSource = dtsTanques
+    TabOrder = 2
+  end
+  object DBEdit3: TDBEdit
+    Left = 8
+    Top = 107
+    Width = 69
+    Height = 21
+    DataField = 'COMBUSTIVEL'
+    DataSource = dtsTanques
+    TabOrder = 3
+    OnExit = DBEdit3Exit
+  end
+  object DBEdit4: TDBEdit
+    Left = 83
+    Top = 107
+    Width = 394
+    Height = 21
+    DataField = 'COMB_DESC'
+    DataSource = dtsTanques
+    ReadOnly = True
+    TabOrder = 4
+  end
+  object qryTanques: TFDQuery
+    Connection = DM.FDConnection1
+    SQL.Strings = (
+      'SELECT'
+      '    T.*,'
+      '    C.descricao AS "COMB_DESC"'
+      'FROM'
+      '    TANQUE T INNER JOIN COMBUSTIVEL C ON'
+      '        T.combustivel = C.id')
+    Left = 400
+    Top = 24
+    object qryTanquesID: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryTanquesDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 50
+    end
+    object qryTanquesCOMBUSTIVEL: TIntegerField
+      FieldName = 'COMBUSTIVEL'
+      Origin = 'COMBUSTIVEL'
+    end
+    object qryTanquesCOMB_DESC: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMB_DESC'
+      Origin = 'DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+  end
+  object dtsTanques: TDataSource
+    DataSet = qryTanques
+    Left = 328
+    Top = 16
+  end
+end

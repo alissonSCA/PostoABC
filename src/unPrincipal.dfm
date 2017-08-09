@@ -25,6 +25,18 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Usu'#225'rios'
         OnClick = Usurios1Click
       end
+      object Combustiveis1: TMenuItem
+        Caption = 'Combustiveis'
+        OnClick = Combustiveis1Click
+      end
+      object anques1: TMenuItem
+        Caption = 'Tanques'
+        OnClick = anques1Click
+      end
+      object Bombas1: TMenuItem
+        Caption = 'Bombas'
+        OnClick = Bombas1Click
+      end
     end
   end
 end
