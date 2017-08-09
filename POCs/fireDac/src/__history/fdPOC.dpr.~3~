@@ -1,0 +1,18 @@
+program fdPOC;
+
+uses
+  Vcl.Forms,
+  unPrincipal in 'unPrincipal.pas' {frmPrincipal},
+  unDados in 'unDados.pas' {DM: TDataModule},
+  unUsuarios in 'unUsuarios.pas' {Form1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

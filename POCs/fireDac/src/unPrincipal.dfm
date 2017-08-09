@@ -1,7 +1,7 @@
-object Form1: TForm1
+object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'POC - FireDAC'
   ClientHeight = 202
   ClientWidth = 447
   Color = clBtnFace
@@ -13,4 +13,13 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object BitBtn1: TBitBtn
+    Left = 64
+    Top = 32
+    Width = 75
+    Height = 25
+    Caption = 'Usu'#225'rios'
+    TabOrder = 0
+    OnClick = BitBtn1Click
+  end
 end
