@@ -1,0 +1,168 @@
+object frmAbastecimento: TfrmAbastecimento
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'frmAbastecimento'
+  ClientHeight = 435
+  ClientWidth = 786
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnActivate = FormActivate
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBCtrlGrid1: TDBCtrlGrid
+    Left = 8
+    Top = 32
+    Width = 289
+    Height = 369
+    DataSource = dtsBomba
+    PanelHeight = 92
+    PanelWidth = 272
+    TabOrder = 0
+    RowCount = 4
+    SelectedColor = clMoneyGreen
+    OnClick = DBCtrlGrid1Click
+    object DBText1: TDBText
+      Left = 8
+      Top = 18
+      Width = 65
+      Height = 17
+      DataField = 'ID'
+      DataSource = dtsBomba
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object DBText2: TDBText
+      Left = 8
+      Top = 48
+      Width = 249
+      Height = 17
+      DataField = 'DESCRICAO'
+      DataSource = dtsBomba
+    end
+  end
+  object Panel1: TPanel
+    Left = 312
+    Top = 32
+    Width = 456
+    Height = 105
+    TabOrder = 1
+    object lblCombustivel: TLabel
+      Left = 16
+      Top = 8
+      Width = 217
+      Height = 25
+      AutoSize = False
+      Caption = 'Combustivel'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlue
+      Font.Height = -21
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblPreco: TLabel
+      Left = 16
+      Top = 57
+      Width = 129
+      Height = 25
+      AutoSize = False
+      Caption = 'R$ 0,00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblTanque: TLabel
+      Left = 16
+      Top = 33
+      Width = 274
+      Height = 13
+      AutoSize = False
+      Caption = 'tanque'
+    end
+    object Label1: TLabel
+      Left = 296
+      Top = 46
+      Width = 60
+      Height = 13
+      Caption = 'Quantidade:'
+    end
+    object edtQuantidade: TEdit
+      Left = 296
+      Top = 65
+      Width = 137
+      Height = 33
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnKeyPress = edtQuantidadeKeyPress
+    end
+    object btnGravar: TBitBtn
+      Left = 368
+      Top = 13
+      Width = 75
+      Height = 25
+      Caption = 'Gravar'
+      TabOrder = 1
+      OnClick = btnGravarClick
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 312
+    Top = 152
+    Width = 456
+    Height = 249
+    DataSource = dtsAbastecimento
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object qryAbastecimento: TFDQuery
+    Connection = DM.FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM ABASTECIMENTO '
+      'ORDER BY DATA DESC')
+    Left = 448
+    Top = 248
+  end
+  object qryBomba: TFDQuery
+    Connection = DM.FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM BOMBAS')
+    Left = 72
+    Top = 152
+  end
+  object dtsBomba: TDataSource
+    DataSet = qryBomba
+    Left = 136
+    Top = 144
+  end
+  object dtsAbastecimento: TDataSource
+    DataSet = qryAbastecimento
+    Left = 568
+    Top = 264
+  end
+end

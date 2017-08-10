@@ -14,10 +14,13 @@ type
     Combustiveis1: TMenuItem;
     anques1: TMenuItem;
     Bombas1: TMenuItem;
+    Movimentaes1: TMenuItem;
+    Abastecer1: TMenuItem;
     procedure Usurios1Click(Sender: TObject);
     procedure Combustiveis1Click(Sender: TObject);
     procedure anques1Click(Sender: TObject);
     procedure Bombas1Click(Sender: TObject);
+    procedure Abastecer1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +34,14 @@ implementation
 
 {$R *.dfm}
 
-uses unUsuarioGUI, unCombustivel, unTanques, unBombas;
+uses unUsuarioGUI, unCombustivel, unTanques, unBombas, unAbastecimento;
+
+procedure TfrmPrincipal.Abastecer1Click(Sender: TObject);
+begin
+  if frmAbastecimento = nil then
+    Application.CreateForm(TfrmAbastecimento, frmAbastecimento);
+  frmAbastecimento.Show;
+end;
 
 procedure TfrmPrincipal.anques1Click(Sender: TObject);
 begin

@@ -1,0 +1,36 @@
+unit unAbastecimentoTO;
+
+interface
+
+uses unDados;
+
+type
+  TAbastecimento = class
+    private
+    FPreco: real;
+    FCombustivelID: Integer;
+    FTotal: real;
+    FId: Integer;
+    FBombaID: Integer;
+    FImposto: real;
+    FData: TDateTime;
+    FTanqueID: Integer;
+    public
+      property ID: Integer read FId write FId;
+      property Data: TDateTime read FData write FData;
+      property BombaID: Integer read FBombaID write FBombaID;
+      property TanqueID: Integer read FTanqueID write FTanqueID;
+      property CombustivelID: Integer read FCombustivelID write FCombustivelID;
+      property Preco: real read FPreco write FPreco;
+      property Total: real read FTotal write FTotal;
+      property Imposto: real read FImposto write FImposto;
+  end;
+
+  TAbastecimentoHelper = class helper for TAbastecimento
+    public
+      function Bomba():
+  end;
+
+implementation
+
+end.

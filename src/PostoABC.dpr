@@ -14,7 +14,9 @@ uses
   unCombustivel in 'unCombustivel.pas' {frmCombustivel},
   unTanques in 'unTanques.pas' {frmTanques},
   unConsulta in 'unConsulta.pas' {frmConsulta},
-  unBombas in 'unBombas.pas' {frmBombas};
+  unBombas in 'unBombas.pas' {frmBombas},
+  unAbastecimento in 'unAbastecimento.pas' {frmAbastecimento},
+  unAbastecimentoTO in 'unAbastecimentoTO.pas';
 
 {$R *.res}
 

@@ -38,5 +38,12 @@ object frmPrincipal: TfrmPrincipal
         OnClick = Bombas1Click
       end
     end
+    object Movimentaes1: TMenuItem
+      Caption = 'Movimenta'#231#245'es'
+      object Abastecer1: TMenuItem
+        Caption = 'Abastecer'
+        OnClick = Abastecer1Click
+      end
+    end
   end
 end

@@ -132,6 +132,11 @@
             <Form>frmBombas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="unAbastecimento.pas">
+            <Form>frmAbastecimento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unAbastecimentoTO.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
