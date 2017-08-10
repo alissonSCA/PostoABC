@@ -3,7 +3,7 @@ object frmAbastecimento: TfrmAbastecimento
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Abastecimentos'
+  Caption = 'frmAbastecimento'
   ClientHeight = 435
   ClientWidth = 786
   Color = clBtnFace
@@ -23,7 +23,7 @@ object frmAbastecimento: TfrmAbastecimento
     Left = 8
     Top = 32
     Width = 289
-    Height = 368
+    Height = 369
     DataSource = dtsBomba
     PanelHeight = 92
     PanelWidth = 272

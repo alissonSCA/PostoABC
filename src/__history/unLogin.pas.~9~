@@ -36,7 +36,6 @@ implementation
 procedure TfrmLogin.BitBtn1Click(Sender: TObject);
 var
   usuario, uLogSis: TUsuario;
-  ini: TIniFile;
 begin
   uLogSis := TSistema.UsuarioLogado;
   usuario := TUsuarioDAO.logar(edtUsuario.Text, edtSenha.Text);
@@ -46,14 +45,6 @@ begin
     uLogSis.Nome := usuario.Nome;
     uLogSis.Username := usuario.Username;
     uLogSis.Password := usuario.Password;
-
-    ini := TIniFile.Create(StringReplace(ParamStr(0),'.exe','.ini',[]));
-    try
-      ini.WriteString('LOGIN','Username',edtUsuario.Text);
-    finally
-      freeAndNil(ini);
-    end;
-
     Close;
   end
   else
