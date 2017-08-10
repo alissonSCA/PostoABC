@@ -16,7 +16,9 @@ uses
   unConsulta in 'unConsulta.pas' {frmConsulta},
   unBombas in 'unBombas.pas' {frmBombas},
   unAbastecimento in 'unAbastecimento.pas' {frmAbastecimento},
-  unAbastecimentoTO in 'unAbastecimentoTO.pas';
+  unAbastecimentoTO in 'unAbastecimentoTO.pas',
+  unListagemDeAbastecimentos in 'unListagemDeAbastecimentos.pas' {frmListagemAbastecimento},
+  unFiltroListagemAbastecimento in 'unFiltroListagemAbastecimento.pas' {frmFiltroListagemAbastecimento};
 
 {$R *.res}
 
@@ -26,6 +28,7 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmConexao, frmConexao);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TfrmListagemAbastecimento, frmListagemAbastecimento);
   TfrmLogin.Login();
 
   Application.Run;

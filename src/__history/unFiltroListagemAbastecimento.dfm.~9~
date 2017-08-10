@@ -1,0 +1,139 @@
+object frmFiltroListagemAbastecimento: TfrmFiltroListagemAbastecimento
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Listagem de Abastecimentos'
+  ClientHeight = 180
+  ClientWidth = 378
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 50
+    Top = 21
+    Width = 40
+    Height = 13
+    Caption = 'Periodo:'
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 48
+    Width = 85
+    Height = 13
+    Caption = 'Combust'#237'vel [F2]:'
+  end
+  object lblCombustivel: TLabel
+    Left = 160
+    Top = 48
+    Width = 12
+    Height = 13
+    Caption = '...'
+  end
+  object Label3: TLabel
+    Left = 27
+    Top = 75
+    Width = 63
+    Height = 13
+    Caption = 'Tanque [F2]:'
+  end
+  object lblTanque: TLabel
+    Left = 160
+    Top = 75
+    Width = 12
+    Height = 13
+    Caption = '...'
+  end
+  object Label5: TLabel
+    Left = 31
+    Top = 102
+    Width = 59
+    Height = 13
+    Caption = 'Bomba [F2]:'
+  end
+  object lblBomba: TLabel
+    Left = 160
+    Top = 102
+    Width = 12
+    Height = 13
+    Caption = '...'
+  end
+  object edtCombustivel: TEdit
+    Left = 97
+    Top = 40
+    Width = 57
+    Height = 21
+    NumbersOnly = True
+    TabOrder = 2
+    OnChange = edtCombustivelChange
+    OnKeyDown = edtCombustivelKeyDown
+  end
+  object edtTanque: TEdit
+    Left = 97
+    Top = 67
+    Width = 57
+    Height = 21
+    NumbersOnly = True
+    TabOrder = 3
+    OnChange = edtTanqueChange
+    OnKeyDown = edtTanqueKeyDown
+  end
+  object edtBomba: TEdit
+    Left = 97
+    Top = 94
+    Width = 57
+    Height = 21
+    NumbersOnly = True
+    TabOrder = 4
+    OnChange = edtBombaChange
+    OnKeyDown = edtBombaKeyDown
+  end
+  object BitBtn1: TBitBtn
+    Left = 101
+    Top = 147
+    Width = 78
+    Height = 25
+    Caption = 'Imprimir'
+    TabOrder = 5
+    OnClick = BitBtn1Click
+  end
+  object BitBtn2: TBitBtn
+    Left = 192
+    Top = 147
+    Width = 75
+    Height = 25
+    Caption = 'Fechar'
+    TabOrder = 6
+    OnClick = BitBtn2Click
+  end
+  object edtDataIni: TMaskEdit
+    Left = 96
+    Top = 13
+    Width = 96
+    Height = 21
+    EditMask = '##/##/#### ##:##'
+    MaxLength = 16
+    TabOrder = 0
+    Text = '  /  /       :  '
+  end
+  object edtDataFim: TMaskEdit
+    Left = 207
+    Top = 13
+    Width = 96
+    Height = 21
+    EditMask = '##/##/#### ##:##'
+    MaxLength = 16
+    TabOrder = 1
+    Text = '  /  /       :  '
+    OnExit = edtDataFimExit
+  end
+end

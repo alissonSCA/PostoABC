@@ -16,11 +16,14 @@ type
     Bombas1: TMenuItem;
     Movimentaes1: TMenuItem;
     Abastecer1: TMenuItem;
+    Relatrios1: TMenuItem;
+    ListagemdeAbastecimentos1: TMenuItem;
     procedure Usurios1Click(Sender: TObject);
     procedure Combustiveis1Click(Sender: TObject);
     procedure anques1Click(Sender: TObject);
     procedure Bombas1Click(Sender: TObject);
     procedure Abastecer1Click(Sender: TObject);
+    procedure ListagemdeAbastecimentos1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,7 +37,8 @@ implementation
 
 {$R *.dfm}
 
-uses unUsuarioGUI, unCombustivel, unTanques, unBombas, unAbastecimento;
+uses unUsuarioGUI, unCombustivel, unTanques, unBombas, unAbastecimento,
+  unFiltroListagemAbastecimento;
 
 procedure TfrmPrincipal.Abastecer1Click(Sender: TObject);
 begin
@@ -62,6 +66,13 @@ begin
   if frmCombustivel = nil then
     Application.CreateForm(TfrmCombustivel, frmCombustivel);
   frmCombustivel.Show;
+end;
+
+procedure TfrmPrincipal.ListagemdeAbastecimentos1Click(Sender: TObject);
+begin
+  if frmFiltroListagemAbastecimento = nil then
+    Application.CreateForm(TfrmFiltroListagemAbastecimento, frmFiltroListagemAbastecimento);
+  frmFiltroListagemAbastecimento.Show;
 end;
 
 procedure TfrmPrincipal.Usurios1Click(Sender: TObject);

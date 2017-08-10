@@ -1,0 +1,129 @@
+unit unFiltroListagemAbastecimento;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unDados, unConsulta, unListagemDeAbastecimentos,
+  Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TfrmFiltroListagemAbastecimento = class(TForm)
+    Label1: TLabel;
+    edtDataIni: TDateTimePicker;
+    edtDataFim: TDateTimePicker;
+    edtCombustivel: TEdit;
+    Label2: TLabel;
+    lblCombustivel: TLabel;
+    edtTanque: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    edtBomba: TEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    procedure edtCombustivelKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure edtTanqueKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure edtBombaKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmFiltroListagemAbastecimento: TfrmFiltroListagemAbastecimento;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmFiltroListagemAbastecimento.edtTanqueKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = vk_f2 then
+  begin
+    edtTanque.Text := TfrmConsulta.consultarBanco(
+                                procedure (qry: TFDQuery; par:String)
+                                begin
+                                  with qry, qry.SQL do
+                                  begin
+                                    Close;
+                                    Clear;
+                                    Add('SELECT ID, DESCRICAO FROM TANQUE');
+                                    if par.Trim <> '' then
+                                    begin
+                                      Add('WHERE ID = :ID');
+                                      ParamByName('ID').AsInteger := strToIntDef(par, -1);
+                                    end;
+                                    Open;
+                                  end;
+                                end,
+                                'ID');
+  end;
+end;
+
+procedure TfrmFiltroListagemAbastecimento.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  freeAndNil(frmFiltroListagemAbastecimento);
+end;
+
+procedure TfrmFiltroListagemAbastecimento.edtBombaKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = vk_f2 then
+  begin
+    edtBomba.Text := TfrmConsulta.consultarBanco(
+                                procedure (qry: TFDQuery; par:String)
+                                begin
+                                  with qry, qry.SQL do
+                                  begin
+                                    Close;
+                                    Clear;
+                                    Add('SELECT ID, DESCRICAO FROM BOMBAS');
+                                    if par.Trim <> '' then
+                                    begin
+                                      Add('WHERE ID = :ID');
+                                      ParamByName('ID').AsInteger := strToIntDef(par, -1);
+                                    end;
+                                    Open;
+                                  end;
+                                end,
+                                'ID');
+  end;
+end;
+
+procedure TfrmFiltroListagemAbastecimento.edtCombustivelKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = vk_f2 then
+  begin
+    edtCombustivel.Text := TfrmConsulta.consultarBanco(
+                                procedure (qry: TFDQuery; par:String)
+                                begin
+                                  with qry, qry.SQL do
+                                  begin
+                                    Close;
+                                    Clear;
+                                    Add('SELECT ID, DESCRICAO FROM COMBUSTIVEL');
+                                    if par.Trim <> '' then
+                                    begin
+                                      Add('WHERE ID = :ID');
+                                      ParamByName('ID').AsInteger := strToIntDef(par, -1);
+                                    end;
+                                    Open;
+                                  end;
+                                end,
+                                'ID');
+  end;
+end;
+
+end.

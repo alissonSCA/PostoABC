@@ -17,8 +17,8 @@ object frmPrincipal: TfrmPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   object MainMenu1: TMainMenu
-    Left = 216
-    Top = 104
+    Left = 296
+    Top = 88
     object Cadastros1: TMenuItem
       Caption = 'Cadastros'
       object Usurios1: TMenuItem
@@ -43,6 +43,13 @@ object frmPrincipal: TfrmPrincipal
       object Abastecer1: TMenuItem
         Caption = 'Abastecer'
         OnClick = Abastecer1Click
+      end
+    end
+    object Relatrios1: TMenuItem
+      Caption = 'Relat'#243'rios'
+      object ListagemdeAbastecimentos1: TMenuItem
+        Caption = 'Listagem de Abastecimentos'
+        OnClick = ListagemdeAbastecimentos1Click
       end
     end
   end
